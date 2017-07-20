@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Konachan.Views.Setting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Konachan.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="12">
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Text="设置" FontSize="24" FontWeight="Light" Foreground="{ThemeResource theme}"/>
+                <ToggleSwitch x:Name="night" Header="夜间模式" Toggled="night_Toggled"/>
+                <ToggleSwitch x:Name="cost" Header="仅使用wifi下载png图片" Toggled="cost_Toggled"/>
+                <ToggleSwitch x:Name="safe" Header="安全模式" OnContent="我还只是个宝宝" OffContent="我是绅士我自豪" Toggled="safe_Toggled"/>
+                <ToggleSwitch x:Name="R18" Header="仅显示18X内容" OnContent="(⊙﹏⊙)" Toggled="R18_Toggled" Visibility="Collapsed"/>
+                <ToggleSwitch x:Name="path" Header="自定义存储位置" Toggled="path_Toggled" OnContent="" OffContent=""/>
+                <TextBlock x:Name="txt_path" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Gray"/>
+                <TextBlock Text="帮助" FontSize="24" FontWeight="Light" Foreground="{ThemeResource theme}"/>
+                <TextBlock TextWrapping="Wrap" Text="①搜索时请以下划线代替同一标签中的空格，以空格隔开多个标签."/>
+                <TextBlock Margin="0 8" TextWrapping="Wrap" Text="②连接慢/下载速度慢是正常情况，只要下载前弹出了开始下载的提示，那么一定时间后总会下载完毕.另：下载中可关闭应用，下次打开后会继续未完下载."/>
+                <TextBlock TextWrapping="Wrap" Text="③好孩子别乱点上面的开关."/>
+                <TextBlock Text="关于" FontSize="24" FontWeight="Light" Foreground="{ThemeResource theme}"/>
+                <TextBlock TextWrapping="Wrap" Text="本应用基于Koachan™网站开发."/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="发现bug请及时反馈:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <HyperlinkButton Content="联系我" Click="HyperlinkButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

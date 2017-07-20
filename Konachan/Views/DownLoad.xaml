@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Konachan.Views.DownLoad"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Konachan.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <MenuFlyout x:Name="flyout">
+            <MenuFlyoutItem Click="cancel_Click">取消下载</MenuFlyoutItem>
+            <MenuFlyoutItem Click="pr_Click">暂停/继续</MenuFlyoutItem>
+            <MenuFlyoutItem>举报</MenuFlyoutItem>
+        </MenuFlyout>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="list_now">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8" Tapped="Grid_Tapped">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}"/>
+                        <ProgressBar Grid.Row="1" x:Name="bar" Value="{Binding Progress}" Foreground="{StaticResource theme}" Margin="0,12,0,12"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2">
+                            <TextBlock Text="{Binding Size}"/>
+                            <TextBlock Text="{Binding Status}" Margin="40,0,40,0"/>
+                            <TextBlock Margin="8,0,0,0">
+                                        <Run Text="{Binding Progress}"/>
+                                        <Run>%</Run>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0,4,0,4"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="{ThemeResource kchan_ListBackground}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <CommandBar Grid.Row="1">
+            <!--<AppBarButton x:Name="high" Label="高优先级" Icon="Upload" Click="high_Click"/>
+            <AppBarButton x:Name="del" Label="删除" Icon="Delete" Click="del_Click"/>-->
+            <AppBarButton x:Name="pause" Label="暂停" Icon="Pause" Click="pause_Click"/>
+            <AppBarButton x:Name="resume" Label="继续" Icon="Play" Click="play_Click"/>
+            <!--<AppBarButton Icon="List" Label="选择" Click="AppBarButton_Click"/>-->
+        </CommandBar>
+    </Grid>
+</Page>
